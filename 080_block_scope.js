@@ -6,4 +6,4 @@ if (true) {
   var animal = "cat"
 }
 
-console.log(animal); // -> cat
+console.log(animal) // -> cat
