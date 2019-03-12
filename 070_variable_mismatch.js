@@ -11,6 +11,6 @@ function showFish() {
   console.log(animal)
 }
 
-showAnimal()  // -> dog
-showFish()    // -> fish
-showAnimal()   // -> fish
+showAnimal() // -> dog
+showFish()   // -> fish
+showAnimal() // -> fish
