@@ -1,4 +1,4 @@
-// Brackets do not create a function scope
+// Conditionals DO NOT create a function scope
 
 var animal = "dog"
 
