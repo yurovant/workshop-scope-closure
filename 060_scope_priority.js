@@ -1,4 +1,4 @@
-// Local variables have priority over global variables
+// Local variables have priority over global ones
 
 var animal1 = "dog"
 var animal2 = "cat"
