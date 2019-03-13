@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Scope & closures in JS</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code {
+        font-family: 'Ubuntu Mono';
+        font-size: 20px;
+        line-height: 26px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+      class: center, middle
+      # SCOPE AND CLOSURES IN JAVASCRIPT
+      ---
+      class: center, middle
+      # Scope
+      ---
+      class: center, middle
+      # Scope - context in which variable exists
+      ---
+      # Undefined variable
+      
+      Assigning a value to the undefined variable creates a variable in global scope
+      ```javascript
+      animal = 'dog'
+      
+      console.log(animal) // -> dog
+      ```
+      ---
+      # Global variable
+      ```javascript
+      var animal = 'dog'
+
+      console.log(animal) // -> dog
+      ```
+      ---
+      # Local variable (function scope)
+      ```javascript
+      var animal = 'dog'
+
+      function showAnimal() {
+        var animal = 'cat'
+        console.log(animal)
+      }
+
+      showAnimal()        // -> cat
+      console.log(animal) // -> dog
+      ```
+      ---
+      # No block scope
+
+      ```javascript
+      var animal = 'dog'
+
+      function showAnimal() {
+        animal = 'cat'
+        console.log(animal)
+      }
+
+      showAnimal()        // -> cat
+      console.log(animal) // -> cat
+      ```
+      ---
+      # Variable mismatch
+
+      ```javascript
+      var animal = 'dog'
+
+      function showAnimal() {
+        console.log(animal)
+      }
+
+      function showFish() {
+        animal = 'fish'
+        console.log(animal)
+      }
+
+      showAnimal() // -> dog
+      showFish()   // -> fish
+      showAnimal() // -> fish
+      ```
+      ---
+      # Scope priority
+
+      Local variables have priority over global variables
+
+      ```javascript
+      var animal1 = 'dog'
+      var animal2 = 'cat'
+
+      function showAnimals() {
+        var animal2 = 'fish'
+        console.log(animal1)
+        console.log(animal2)
+      }
+
+      showAnimals() // -> dog, fish
+      ```
+      ---
+      # Variable in brackets
+
+      Brackets DO NOT create a function scope for variables defined with `var` keyword
+      
+      ```javascript
+      var animal = 'dog'
+
+      {
+        var animal = 'cat'
+      }
+
+      console.log(animal) // -> cat
+      ```
+      ---
+      # Variable in loop
+      
+      Loops DO NOT create a function scope for variables defined with `var` keyword
+
+      ```javascript
+      var animal = 'dog'
+
+      for (var i = 1; i < 10; i++) {
+        var animal = 'cat'
+        void(0)
+      }
+      
+      console.log(i) // -> 10
+      console.log(animal) // -> cat
+      ```
+      ---
+      # let
+      ```let``` defines variable within block scope
+
+      ```javascript
+      {
+        let animal = 'cat'
+      }
+
+      console.log(typeof animal) // -> undefined
+
+      for (let i = 1; i < 10; i++) {
+        void(0)
+      }
+      
+      console.log(typeof i) // -> undefined
+      ```
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create()
+    </script>
+  </body>
+</html>
